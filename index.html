@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#062a4d"><title>Team Norway East – Falköping</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<style>
+:root{--navy:#062a4d;--navy2:#0b3e6f;--blue:#1268b3;--red:#e72935;--ice:#eef5fb;--text:#14202b;--muted:#647586;--line:#d8e2eb;--green:#1f8a5b;--shadow:0 10px 30px rgba(5,35,62,.10);--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f8fb;color:var(--text)}
+.wrap{max-width:1080px;margin:auto}.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;padding:20px 18px 28px}
+.logo-shell{background:white;border-radius:18px;padding:8px 14px;display:inline-block;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.logo{display:block;width:min(360px,78vw);height:auto}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;opacity:.8;font-weight:800}
+h1{font-size:clamp(2rem,7vw,4.1rem);line-height:.96;margin:18px 0 10px;letter-spacing:-.05em}.subtitle{margin:0;max-width:700px;color:#dcecff}
+.hero-info{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.pill{border:1px solid rgba(255,255,255,.23);background:rgba(255,255,255,.08);padding:8px 11px;border-radius:999px;font-size:.88rem}
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;gap:6px;overflow:auto;padding:9px 12px;scrollbar-width:none}.nav a{white-space:nowrap;text-decoration:none;padding:9px 12px;border-radius:12px;font-size:.9rem;font-weight:750;color:#33485a}.nav a:hover{background:var(--ice);color:var(--navy)}
+main{padding:22px 14px 50px}section{scroll-margin-top:70px;margin:0 auto 26px;max-width:1080px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}
+h2{margin:0;font-size:1.45rem;letter-spacing:-.025em;color:var(--navy)}h3{color:var(--navy)}.section-note{font-size:.85rem;color:var(--muted)}
+.card{background:white;border:1px solid #e2e9ef;border-radius:var(--radius);box-shadow:var(--shadow)}.day{overflow:hidden;margin-bottom:14px}
+.day-head{display:flex;justify-content:space-between;align-items:center;background:var(--navy);color:white;padding:14px 16px}.day-head span{font-size:.82rem;color:#cfe5f7}
+.event{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 16px;border-top:1px solid #edf1f4;position:relative}.time{font-weight:900;color:var(--blue)}
+.event-title{font-weight:800;margin-bottom:3px}.location{font-size:.89rem;color:var(--muted)}.match .event-title{color:var(--red)}.match:before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:4px;background:var(--red)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.pad{padding:18px}.muted{color:var(--muted);font-size:.92rem}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 13px;border:0;border-radius:11px;text-decoration:none;font-weight:800;font-size:.9rem;cursor:pointer;background:var(--navy);color:white}.btn.secondary{background:var(--ice);color:var(--navy)}
+label{font-weight:800;font-size:.86rem;color:#344b5f;display:block;margin:12px 0 5px}select,input,textarea{width:100%;padding:11px 12px;border:1px solid #cfdbe4;border-radius:11px;background:#fff;font:inherit;color:var(--text)}textarea{min-height:76px;resize:vertical}
+.status{margin-top:11px;font-size:.9rem;min-height:20px}.ok{color:var(--green);font-weight:800}.error{color:var(--red);font-weight:800}
+.table-card{overflow:auto}.data-table{width:100%;border-collapse:collapse;min-width:650px}.data-table th,.data-table td{text-align:left;padding:11px 12px;border-bottom:1px solid #edf1f4;font-size:.9rem}.data-table th{background:#f3f7fa;color:var(--navy);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+.not-answered{color:#9a6a09}.answered{color:var(--green);font-weight:800}.alert{padding:15px 16px;border-radius:16px;background:#fff7e6;border:1px solid #f3dfb1;color:#6f5117;margin-bottom:14px}
+.car-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.car{padding:18px}.person{padding:9px 10px;background:#f6f8fa;border-radius:10px;margin-top:6px}.empty{color:#91a0ad;font-style:italic}
+.footer{text-align:center;color:#7f8c97;font-size:.82rem;padding:12px 16px 28px}
+@media(max-width:720px){.grid2,.car-list{grid-template-columns:1fr}.event{grid-template-columns:60px 1fr;padding:13px 14px}.logo{width:min(300px,82vw)}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div class="logo-shell"><img src="TNE Bryst riktig blå.png" class="logo" alt="Team Norway East"></div>
+<h1>Falköping<br>Team Trip</h1>
+<p class="subtitle">Program, reiseinformasjon og felles oversikt for trenings- og kamphelgen hos RIG Falköping.</p>
+<div class="hero-info"><span class="pill">📍 Falköping, Sverige</span><span class="pill">🏨 Hotell Syfabriken</span><span class="pill">🏐 Frejahallen</span></div>
+</div></header>
+
+<nav class="nav"><div class="wrap">
+<a href="#program">Program</a><a href="#fredag">Fredagsreise</a><a href="#reise">Reiserute</a><a href="#biler">Biler</a><a href="spillere.html">Spillertropp</a>
+</div></nav>
+
+<main>
+<section id="program"><div class="section-title"><div><div class="eyebrow" style="color:#718393">Helgeplan</div><h2>Program</h2></div><div class="section-note">Foreløpig program</div></div><div id="programList"></div></section>
+
+<section id="fredag">
+<div class="section-title"><div><div class="eyebrow" style="color:#718393">Planlegging</div><h2>Når kan du reise fredag?</h2></div><div class="section-note">Svarene vises for alle</div></div>
+<div class="grid2">
+<div class="card pad">
+<h3 style="margin-top:0">Registrer eller endre svar</h3>
+<p class="muted">Velg navnet ditt og registrer det <strong>tidligste tidspunktet</strong> du kan reise fredag.</p>
+<form id="travelForm">
+<label for="player">Spiller</label><select id="player" required><option value="">Velg spiller…</option></select>
+<label for="availableTime">Tidligste avreise</label><input id="availableTime" type="time" required>
+<label for="departurePlace">Møtested / hentested</label><input id="departurePlace" maxlength="120" placeholder="F.eks. Oslo S, Sandvika, hjemme…">
+<label for="comment">Kommentar</label><textarea id="comment" maxlength="300" placeholder="F.eks. ferdig på skolen kl. 14:30"></textarea>
+<div class="btns"><button class="btn" type="submit">Lagre svar</button><button class="btn secondary" type="button" id="refreshBtn">Oppdater oversikt</button></div>
+<div id="status" class="status"></div>
+</form>
+</div>
+<div class="card pad">
+<h3 style="margin-top:0">Felles oversikt</h3>
+<p class="muted">Når alle har svart kan bilene fordeles ut fra avreisetid og hentested.</p>
+<div class="alert" style="margin:14px 0 0"><strong>Merk:</strong> Kommentarer og hentested er synlige for alle som har lenken.</div>
+</div>
+</div>
+<div style="height:14px"></div>
+<div class="card table-card"><table class="data-table"><thead><tr><th>Spiller</th><th>Kan reise</th><th>Møtested</th><th>Kommentar</th><th>Status</th></tr></thead><tbody id="responseRows"><tr><td colspan="5">Laster svar…</td></tr></tbody></table></div>
+</section>
+
+<section id="reise"><div class="section-title"><div><div class="eyebrow" style="color:#718393">Transport</div><h2>Reiserute</h2></div></div>
+<div class="grid2">
+<div class="card pad"><h3>Fredag · Oslo → Falköping</h3><p><strong>16:00</strong> · Foreløpig avreise Oslo</p><p><strong>20:30</strong> · Innsjekk Hotell Syfabriken</p><div class="btns"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Oslo%2C+Norway&destination=Hotell+Syfabriken%2C+Falkoping%2C+Sweden">Åpne kjørerute ↗</a></div></div>
+<div class="card pad"><h3>Søndag · Falköping → Oslo</h3><p><strong>13:00</strong> · Retur etter kamp</p><p>Ankomst Oslo oppdateres senere.</p><div class="btns"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Falkoping%2C+Sweden&destination=Oslo%2C+Norway">Åpne kjørerute ↗</a></div></div>
+</div></section>
+
+<section id="biler"><div class="section-title"><div><div class="eyebrow" style="color:#718393">Fordeling</div><h2>Biler og spillere</h2></div><div class="section-note">Fordeles etter svarene</div></div>
+<div class="car-list">
+<div class="card car"><h3>🚗 Thomas Roness</h3><div class="person empty">Spillere fordeles senere</div></div>
+<div class="card car"><h3>🚗 Eirik Roness</h3><div class="person empty">Spillere fordeles senere</div></div>
+<div class="card car"><h3>🚗 Jan-Erik Kristiansen</h3><div class="person empty">Spillere fordeles senere</div></div>
+<div class="card car"><h3>🚗 Miodrag Marinkovic</h3><div class="person empty">Spillere fordeles senere</div></div>
+</div></section>
+</main>
+
+<div class="footer">Team Norway East · Falköping</div>
+
+<script>
+const players = [{"name": "Marko Marinkovic", "position": "Midt"}, {"name": "Isak Skjevdal", "position": "Libero"}, {"name": "Benjamin Waaland Kristiansen", "position": "Libero"}, {"name": "Amund Remme Røstengen", "position": "Opplegger"}, {"name": "Torstein Røseid", "position": "Midt"}, {"name": "Thomas Roness", "position": "Kant"}, {"name": "Sturla Myrhol", "position": "Midt/Kant"}, {"name": "Oscar Friestad", "position": "Diagonal"}, {"name": "Oscar Michelsen", "position": "Kant"}, {"name": "Tobias Østerbø", "position": "Diagonal"}, {"name": "Martin Trengereid", "position": "Midt"}, {"name": "Mikael Beckman Dos Santos", "position": "Kant"}, {"name": "Hermann Kristiansen", "position": "Opplegger"}, {"name": "Petter Bull", "position": "Midt"}];
+const program = [
+{day:"Fredag",items:[
+{time:"16:00",title:"Avreise Oslo",location:""},
+{time:"20:30",title:"Innsjekk Hotell Syfabriken",location:"Hotell Syfabriken"},
+{time:"21:00",title:"Lett treningsøkt / lek",location:"Frejahallen"}]},
+{day:"Lørdag",items:[
+{time:"07:00",title:"Frokost",location:"Hotell Syfabriken"},
+{time:"09:00",title:"Oppmøte hall",location:"Frejahallen"},
+{time:"10:00",title:"Kampstart",location:"Team Norway East – RIG Falköping",match:true},
+{time:"13:00",title:"Lunsj",location:"Lokal restaurant"},
+{time:"15:00",title:"Oppmøte hall",location:"Frejahallen"},
+{time:"16:00",title:"Kampstart",location:"RIG Falköping – Team Norway East",match:true},
+{time:"19:30",title:"Middag",location:"Lokal restaurant"}]},
+{day:"Søndag",items:[
+{time:"07:00",title:"Frokost",location:"Hotell Syfabriken"},
+{time:"09:00",title:"Oppmøte hall",location:"Frejahallen"},
+{time:"10:00",title:"Kampstart",location:"Motstander / kampinfo kommer",match:true},
+{time:"13:00",title:"Retur Oslo",location:""}]}
+];
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+document.getElementById("programList").innerHTML = program.map(d=>`<div class="card day"><div class="day-head"><strong>${esc(d.day)}</strong><span>${d.items.length} aktiviteter</span></div>${d.items.map(i=>`<div class="event ${i.match?"match":""}"><div class="time">${esc(i.time)}</div><div><div class="event-title">${esc(i.title)}</div>${i.location?`<div class="location">${esc(i.location)}</div>`:""}</div></div>`).join("")}</div>`).join("");
+document.getElementById("player").innerHTML += players.map(p=>`<option value="${esc(p.name)}">${esc(p.name)}</option>`).join("");
+
+const sb = supabase.createClient(window.TNE_CONFIG.supabaseUrl, window.TNE_CONFIG.supabaseAnonKey);
+
+async function loadResponses(){
+ const rows=document.getElementById("responseRows");
+ rows.innerHTML=`<tr><td colspan="5">Laster svar…</td></tr>`;
+ const {data,error}=await sb.from("tne_falkoping_travel").select("player_name,available_time,departure_place,comment").order("available_time",{ascending:true});
+ if(error){rows.innerHTML=`<tr><td colspan="5" class="error">${esc(error.message)}</td></tr>`;return;}
+ const byName=new Map((data||[]).map(x=>[x.player_name,x]));
+ rows.innerHTML=players.map(p=>{
+   const r=byName.get(p.name);
+   return `<tr><td><strong>${esc(p.name)}</strong></td><td>${r?esc((r.available_time||"").slice(0,5)):"–"}</td><td>${r?esc(r.departure_place||""):""}</td><td>${r?esc(r.comment||""):""}</td><td class="${r?"answered":"not-answered"}">${r?"✓ Svart":"Mangler svar"}</td></tr>`;
+ }).join("");
+}
+
+document.getElementById("travelForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const status=document.getElementById("status");
+ const payload={
+   player_name:document.getElementById("player").value,
+   available_time:document.getElementById("availableTime").value,
+   departure_place:document.getElementById("departurePlace").value.trim(),
+   comment:document.getElementById("comment").value.trim(),
+   updated_at:new Date().toISOString()
+ };
+ status.textContent="Lagrer…";
+ const {error}=await sb.from("tne_falkoping_travel").upsert(payload,{onConflict:"player_name"});
+ if(error){status.innerHTML=`<span class="error">${esc(error.message)}</span>`;return;}
+ status.innerHTML='<span class="ok">✓ Svaret er lagret og synlig for alle.</span>';
+ await loadResponses();
+});
+document.getElementById("refreshBtn").addEventListener("click",loadResponses);
+loadResponses();
+</script>
+</body></html>
