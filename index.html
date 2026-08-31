@@ -290,8 +290,14 @@ textarea{min-height:65px;resize:vertical}
         <input id="availableTime" type="time" required>
       </div>
       <div class="field">
-        <label for="departurePlace">Møtested / hentested</label>
-        <input id="departurePlace" maxlength="120" placeholder="F.eks. Oslo S">
+        <label for="departurePlace">Oppmøtested</label>
+        <select id="departurePlace" required>
+          <option value="">Velg oppmøtested …</option>
+          <option value="Drammen">Drammen</option>
+          <option value="Sandvika">Sandvika</option>
+          <option value="Oslo">Oslo</option>
+          <option value="Fredrikstad">Fredrikstad</option>
+        </select>
       </div>
       <div class="field full">
         <label for="comment">Kommentar</label>
@@ -326,8 +332,8 @@ textarea{min-height:65px;resize:vertical}
   </div>
   <div class="program-day">
     <h3>Fredag</h3>
-    <div class="program-row"><div class="program-time">16:00</div><div>Avreise Oslo</div></div>
-    <div class="program-row"><div class="program-time">20:30</div><div>Innsjekk · Hotell Syfabriken</div></div>
+    <div class="program-row"><div class="program-time">13–16</div><div>Avreise Oslo · så tidlig som mulig</div></div>
+    <div class="program-row"><div class="program-time">20:00</div><div>Innsjekk · Hotell Syfabriken</div></div>
     <div class="program-row"><div class="program-time">21:00</div><div>Lett treningsøkt / lek · Frejahallen</div></div>
   </div>
   <div class="program-day">
@@ -344,7 +350,7 @@ textarea{min-height:65px;resize:vertical}
     <h3>Søndag</h3>
     <div class="program-row"><div class="program-time">07:00</div><div>Frokost · Hotell Syfabriken</div></div>
     <div class="program-row"><div class="program-time">09:00</div><div>Oppmøte hall · Frejahallen</div></div>
-    <div class="program-row"><div class="program-time">10:00</div><div class="program-match">Kampstart</div></div>
+    <div class="program-row"><div class="program-time">10:00</div><div class="program-match">Team Norway East – RIG Falköping</div></div>
     <div class="program-row"><div class="program-time">13:00</div><div>Retur Oslo</div></div>
   </div>
 </section>
