@@ -230,6 +230,15 @@ textarea{min-height:65px;resize:vertical}
   .field.full{grid-column:auto}
   .car-grid{grid-template-columns:1fr}
 }
+
+.focus-card{border:2px solid #c8d7ea;box-shadow:0 8px 28px rgba(11,45,89,.14)}
+.car-focus-head{background:linear-gradient(135deg,#0b2d59,#124b88);color:#fff;border-bottom:0}
+.car-focus-head h2{color:#fff}.car-focus-head .small{color:#dce9f7}
+.focus-card .car-grid{padding-top:10px}
+.focus-card .car-box{background:#f7faff;border:1px solid #d6e2ef}
+.focus-card .car-box strong{font-size:.94rem;margin-bottom:3px}
+@media(max-width:560px){.focus-card .car-grid{gap:7px}.focus-card .car-box{padding:11px}}
+
 </style>
 </head>
 <body>
@@ -244,16 +253,114 @@ textarea{min-height:65px;resize:vertical}
     <button class="menu-btn" id="menuBtn" aria-label="Meny">☰</button>
   </div>
   <nav class="quick-menu" id="quickMenu">
-    <a href="#planlegging">Planlegging</a>
-    <a href="#svar">Svar</a>
-    <a href="#program">Program</a>
     <a href="#biler">Biler</a>
+    <a href="#program">Program</a>
     <a href="#spillertropp">Spillertropp</a>
     <a href="#sjaforer">Sjåfører</a>
+    <a href="#planlegging">Planlegging</a>
+    <a href="#svar">Svar</a>
   </nav>
 </header>
 
 <main>
+<section id="biler" class="card focus-card">
+  <div class="section-head car-focus-head">
+    <div><h2>Biler og sjåfører</h2><div class="small">Fordeling fredag 4. september</div></div>
+  </div>
+  <div class="pad" style="padding-bottom:4px">
+    <div class="notice"><strong>Avreise:</strong> Hver sjåfør avtaler avreisetid og øvrige detaljer direkte med spillerne som skal sitte på i bilen.</div>
+  </div>
+  <div class="car-grid">
+    <div class="car-box"><strong>🚗 Thomas Roness</strong>
+      <span><b>Avreise:</b> Drammen · <a href="tel:+4792043477">92043477</a></span>
+      <span style="display:block;margin-top:6px">Sturla Myrhol</span><span style="display:block">Tobias Østerbø</span><span style="display:block">Mikael Beckman Dos Santos</span>
+    </div>
+    <div class="car-box"><strong>🚗 Eirik Roness</strong>
+      <span><b>Avreise:</b> Oslo · <a href="tel:+4798222723">98222723</a></span>
+      <span style="display:block;margin-top:6px">Amund Remme Røstengen</span><span style="display:block">Torstein Røseid</span><span style="display:block">Oscar Michelsen</span>
+    </div>
+    <div class="car-box"><strong>🚗 Jan-Erik Kristiansen</strong>
+      <span><b>Avreise:</b> Oslo · <a href="tel:+4790749924">90749924</a></span>
+      <span style="display:block;margin-top:6px">Benjamin Waaland Kristiansen</span><span style="display:block">Oscar Friestad</span><span style="display:block">Martin Trengereid</span><span style="display:block">Petter Bull</span>
+    </div>
+    <div class="car-box"><strong>🚗 Miodrag Marinkovic</strong>
+      <span><b>Avreise:</b> Sandvika · <a href="tel:+4791174080">91174080</a></span>
+      <span style="display:block;margin-top:6px">Marko Marinkovic</span><span style="display:block">Isak Skjevdal</span><span style="display:block">Hermann Kristiansen</span>
+    </div>
+  </div>
+</section>
+
+<section id="program" class="card">
+  <div class="section-head">
+    <div><h2>Program</h2><div class="small">Foreløpig program</div></div>
+  </div>
+  <div class="program-day">
+    <h3>Fredag</h3>
+    <div class="program-row"><div class="program-time">13–16</div><div>Avreise Oslo · så tidlig som mulig</div></div>
+    <div class="program-row"><div class="program-time">20:00</div><div>Innsjekk · Hotell Syfabriken</div></div>
+    <div class="program-row"><div class="program-time">21:00</div><div>Lett treningsøkt / lek · Frejahallen</div></div>
+  </div>
+  <div class="program-day">
+    <h3>Lørdag</h3>
+    <div class="program-row"><div class="program-time">07:00</div><div>Frokost · Hotell Syfabriken</div></div>
+    <div class="program-row"><div class="program-time">09:00</div><div>Oppmøte hall · Frejahallen</div></div>
+    <div class="program-row"><div class="program-time">10:00</div><div class="program-match">Team Norway East – RIG Falköping</div></div>
+    <div class="program-row"><div class="program-time">13:00</div><div>Lunsj · lokal restaurant</div></div>
+    <div class="program-row"><div class="program-time">15:00</div><div>Oppmøte hall · Frejahallen</div></div>
+    <div class="program-row"><div class="program-time">16:00</div><div class="program-match">RIG Falköping – Team Norway East</div></div>
+    <div class="program-row"><div class="program-time">19:30</div><div>Middag · lokal restaurant</div></div>
+  </div>
+  <div class="program-day">
+    <h3>Søndag</h3>
+    <div class="program-row"><div class="program-time">07:00</div><div>Frokost · Hotell Syfabriken</div></div>
+    <div class="program-row"><div class="program-time">09:00</div><div>Oppmøte hall · Frejahallen</div></div>
+    <div class="program-row"><div class="program-time">10:00</div><div class="program-match">Team Norway East – RIG Falköping</div></div>
+    <div class="program-row"><div class="program-time">13:00</div><div>Retur Oslo</div></div>
+  </div>
+</section>
+
+<section id="spillertropp" class="card">
+  <div class="section-head"><div><h2>Spillertropp</h2><div class="small">14 spillere</div></div></div>
+  <table class="compact-table">
+    <thead><tr><th>Spiller</th><th>Telefon</th><th>Posisjon</th></tr></thead>
+    <tbody><tr><td>Marko Marinkovic</td><td><a href="tel:+4792051303">+47 920 51 303</a></td><td>Midt</td></tr>
+<tr><td>Isak Skjevdal</td><td><a href="tel:+4790493073">47 904 93 073</a></td><td>Libero</td></tr>
+<tr><td>Benjamin Waaland Kristiansen</td><td><a href="tel:+4746528040">+47 465 28 040</a></td><td>Libero</td></tr>
+<tr><td>Amund Remme Røstengen</td><td><a href="tel:+4747155336">47 471 55 336</a></td><td>Opplegger</td></tr>
+<tr><td>Torstein Røseid</td><td><a href="tel:+4741109282">+47 411 09 282</a></td><td>Midt</td></tr>
+<tr><td>Thomas Roness</td><td><a href="tel:+4792043477">+47 920 43 477</a></td><td>Kant</td></tr>
+<tr><td>Sturla Myrhol</td><td><a href="tel:+4746932666">+47 469 32 666</a></td><td>Midt/Kant</td></tr>
+<tr><td>Oscar Friestad</td><td><a href="tel:+4791745788">+47 917 45 788</a></td><td>Diagonal</td></tr>
+<tr><td>Oscar Michelsen</td><td><a href="tel:+4746967020">+47 469 67 020</a></td><td>Kant</td></tr>
+<tr><td>Tobias Østerbø</td><td><a href="tel:+4746922525">+47 469 22 525</a></td><td>Diagonal</td></tr>
+<tr><td>Martin Trengereid</td><td><a href="tel:+4793823310">+47 938 23 310</a></td><td>Midt</td></tr>
+<tr><td>Mikael Beckman Dos Santos</td><td><a href="tel:+4748384471">47 483 84 471</a></td><td>Kant</td></tr>
+<tr><td>Hermann Kristiansen</td><td><a href="tel:+4792299188">+47 922 99 188</a></td><td>Opplegger</td></tr>
+<tr><td>Petter Bull</td><td><a href="tel:+4747018330">+47 470 18 330</a></td><td>Midt</td></tr></tbody>
+  </table>
+</section>
+
+<section id="sjaforer" class="card">
+  <div class="section-head"><div><h2>Sjåfører</h2><div class="small">Kontaktinformasjon</div></div></div>
+  <table class="compact-table">
+    <thead><tr><th>Sjåfør</th><th>Telefon</th></tr></thead>
+    <tbody><tr><td>Thomas Roness</td><td><a href="tel:+4792043477">92043477</a></td></tr>
+<tr><td>Eirik Roness</td><td><a href="tel:+4798222723">98222723</a></td></tr>
+<tr><td>Jan-Erik Kristiansen</td><td><a href="tel:+4790749924">90749924</a></td></tr>
+<tr><td>Miodrag Marinkovic</td><td><a href="tel:+4791174080">91174080</a></td></tr></tbody>
+  </table>
+  <div class="pad"><div class="notice">Telefonnumrene er synlige for alle som har tilgang til denne siden.</div></div>
+</section>
+
+<section id="om" class="card pad">
+  <h2>Om turen</h2>
+  <div class="small" style="margin-top:7px">Team Norway East reiser til RIG Falköping 4.–6. september 2026 for trening og kamper. Hotell: Syfabriken. Hall: Frejahallen.</div>
+  <div class="cta-row">
+    <a class="btn secondary smallbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hotell+Syfabriken+Falkoping">Hotell i kart</a>
+    <a class="btn secondary smallbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Frejahallen+Falkoping">Frejahallen i kart</a>
+  </div>
+</section>
+
 <section id="planlegging" class="card pad">
   <div class="hero-card">
     <div class="icon-circle">📋</div>
@@ -325,95 +432,14 @@ textarea{min-height:65px;resize:vertical}
   </div>
   <div class="more-row" id="refreshBtn">↻ Oppdater oversikt</div>
 </section>
-
-<section id="program" class="card">
-  <div class="section-head">
-    <div><h2>Program</h2><div class="small">Foreløpig program</div></div>
-  </div>
-  <div class="program-day">
-    <h3>Fredag</h3>
-    <div class="program-row"><div class="program-time">13–16</div><div>Avreise Oslo · så tidlig som mulig</div></div>
-    <div class="program-row"><div class="program-time">20:00</div><div>Innsjekk · Hotell Syfabriken</div></div>
-    <div class="program-row"><div class="program-time">21:00</div><div>Lett treningsøkt / lek · Frejahallen</div></div>
-  </div>
-  <div class="program-day">
-    <h3>Lørdag</h3>
-    <div class="program-row"><div class="program-time">07:00</div><div>Frokost · Hotell Syfabriken</div></div>
-    <div class="program-row"><div class="program-time">09:00</div><div>Oppmøte hall · Frejahallen</div></div>
-    <div class="program-row"><div class="program-time">10:00</div><div class="program-match">Team Norway East – RIG Falköping</div></div>
-    <div class="program-row"><div class="program-time">13:00</div><div>Lunsj · lokal restaurant</div></div>
-    <div class="program-row"><div class="program-time">15:00</div><div>Oppmøte hall · Frejahallen</div></div>
-    <div class="program-row"><div class="program-time">16:00</div><div class="program-match">RIG Falköping – Team Norway East</div></div>
-    <div class="program-row"><div class="program-time">19:30</div><div>Middag · lokal restaurant</div></div>
-  </div>
-  <div class="program-day">
-    <h3>Søndag</h3>
-    <div class="program-row"><div class="program-time">07:00</div><div>Frokost · Hotell Syfabriken</div></div>
-    <div class="program-row"><div class="program-time">09:00</div><div>Oppmøte hall · Frejahallen</div></div>
-    <div class="program-row"><div class="program-time">10:00</div><div class="program-match">Team Norway East – RIG Falköping</div></div>
-    <div class="program-row"><div class="program-time">13:00</div><div>Retur Oslo</div></div>
-  </div>
-</section>
-
-<section id="biler" class="card">
-  <div class="section-head"><div><h2>Biler og sjåfører</h2><div class="small">Spillere fordeles etter svarene</div></div></div>
-  <div class="car-grid">
-    <div class="car-box"><strong>🚗 Thomas Roness</strong><span>Spillere fordeles senere</span></div>
-    <div class="car-box"><strong>🚗 Eirik Roness</strong><span>Spillere fordeles senere</span></div>
-    <div class="car-box"><strong>🚗 Jan-Erik Kristiansen</strong><span>Spillere fordeles senere</span></div>
-    <div class="car-box"><strong>🚗 Miodrag Marinkovic</strong><span>Spillere fordeles senere</span></div>
-  </div>
-</section>
-
-<section id="spillertropp" class="card">
-  <div class="section-head"><div><h2>Spillertropp</h2><div class="small">14 spillere</div></div></div>
-  <table class="compact-table">
-    <thead><tr><th>Spiller</th><th>Posisjon</th></tr></thead>
-    <tbody><tr><td>Marko Marinkovic</td><td>Midt</td></tr>
-<tr><td>Isak Skjevdal</td><td>Libero</td></tr>
-<tr><td>Benjamin Waaland Kristiansen</td><td>Libero</td></tr>
-<tr><td>Amund Remme Røstengen</td><td>Opplegger</td></tr>
-<tr><td>Torstein Røseid</td><td>Midt</td></tr>
-<tr><td>Thomas Roness</td><td>Kant</td></tr>
-<tr><td>Sturla Myrhol</td><td>Midt/Kant</td></tr>
-<tr><td>Oscar Friestad</td><td>Diagonal</td></tr>
-<tr><td>Oscar Michelsen</td><td>Kant</td></tr>
-<tr><td>Tobias Østerbø</td><td>Diagonal</td></tr>
-<tr><td>Martin Trengereid</td><td>Midt</td></tr>
-<tr><td>Mikael Beckman Dos Santos</td><td>Kant</td></tr>
-<tr><td>Hermann Kristiansen</td><td>Opplegger</td></tr>
-<tr><td>Petter Bull</td><td>Midt</td></tr></tbody>
-  </table>
-</section>
-
-<section id="sjaforer" class="card">
-  <div class="section-head"><div><h2>Sjåfører</h2><div class="small">Kontaktinformasjon</div></div></div>
-  <table class="compact-table">
-    <thead><tr><th>Sjåfør</th><th>Telefon</th></tr></thead>
-    <tbody><tr><td>Thomas Roness</td><td><a href="tel:+4792043477">92043477</a></td></tr>
-<tr><td>Eirik Roness</td><td><a href="tel:+4798222723">98222723</a></td></tr>
-<tr><td>Jan-Erik Kristiansen</td><td><a href="tel:+4790749924">90749924</a></td></tr>
-<tr><td>Miodrag Marinkovic</td><td><a href="tel:+4791174080">91174080</a></td></tr></tbody>
-  </table>
-  <div class="pad"><div class="notice">Telefonnumrene er synlige for alle som har tilgang til denne siden.</div></div>
-</section>
-
-<section id="om" class="card pad">
-  <h2>Om turen</h2>
-  <div class="small" style="margin-top:7px">Team Norway East reiser til RIG Falköping 4.–6. september 2026 for trening og kamper. Hotell: Syfabriken. Hall: Frejahallen.</div>
-  <div class="cta-row">
-    <a class="btn secondary smallbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hotell+Syfabriken+Falkoping">Hotell i kart</a>
-    <a class="btn secondary smallbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Frejahallen+Falkoping">Frejahallen i kart</a>
-  </div>
-</section>
 </main>
 </div>
 
 <nav class="bottom-nav">
-  <a href="#top" class="active"><span class="ico">⌂</span>Hjem</a>
-  <a href="#svar"><span class="ico">✓</span>Svar</a>
+  <a href="#biler" class="active"><span class="ico">🚗</span>Biler</a>
+  <a href="#program"><span class="ico">▣</span>Program</a>
   <a href="#spillertropp"><span class="ico">👥</span>Tropp</a>
-  <a href="#program"><span class="ico">ℹ</span>Program</a>
+  <a href="#planlegging"><span class="ico">✎</span>Svar</a>
 </nav>
 
 <script>
